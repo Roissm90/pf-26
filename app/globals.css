@@ -10,6 +10,8 @@
   --card: #ffffff;
   --accent: #087f68;
   --accent-foreground: #ffffff;
+  --sweep-edge: 12%;
+  --sweep-center: 35%;
 }
 
 .dark {
@@ -20,6 +22,8 @@
   --card: #111113;
   --accent: #6ee7b7;
   --accent-foreground: #0a0a0a;
+  --sweep-edge: 3%;
+  --sweep-center: 9%;
 }
 
 @theme inline {
@@ -50,6 +54,42 @@ h1,
 h2 {
   font-weight: 600;
   letter-spacing: 0 !important;
+}
+
+.portfolio-content::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    transparent 30%,
+    color-mix(in srgb, var(--accent) var(--sweep-edge), transparent) 42%,
+    color-mix(in srgb, var(--accent) var(--sweep-center), transparent) 50%,
+    color-mix(in srgb, var(--accent) var(--sweep-edge), transparent) 58%,
+    transparent 70%
+  );
+  background-size: 300% 300%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: accent-sweep 20s ease-in-out infinite;
+}
+
+@keyframes accent-sweep {
+  0% {
+    opacity: 0;
+    background-position: 100% 100%;
+  }
+  5%,
+  20% {
+    opacity: 1;
+  }
+  25%,
+  100% {
+    opacity: 0;
+    background-position: 0% 0%;
+  }
 }
 
 ::selection {
@@ -103,6 +143,11 @@ select {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .portfolio-content::before {
+    display: none;
+    animation: none;
   }
 
   *,

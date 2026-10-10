@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <AnalyticsTracker />
       <Navbar />
-      <main className="flex-1">
+      <main className="portfolio-content relative isolate flex-1">
         <Hero />
         <About />
         <Experience />
