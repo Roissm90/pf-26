@@ -15,6 +15,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               data-analytics="footer-wpp-production"
+              className="underline underline-offset-4"
             >
               WPP Production
             </a>

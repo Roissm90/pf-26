@@ -83,6 +83,11 @@ export function Navbar() {
     <header
       ref={headerRef}
       onFocusCapture={() => setHidden(false)}
+      onBlurCapture={(event) => {
+        if (!(event.relatedTarget instanceof Node) || !event.currentTarget.contains(event.relatedTarget)) {
+          setOpen(false);
+        }
+      }}
       className={`sticky top-0 z-50 border-b border-border/60 bg-background transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${hidden && !open ? "-translate-y-full pointer-events-none" : "translate-y-0"}`}
     >
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">

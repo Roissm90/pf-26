@@ -15,15 +15,27 @@ export async function POST(request: Request) {
   if (Number(request.headers.get("content-length") ?? 0) > 1024) {
     return new Response(null, { status: 413 });
   }
+  const reader = request.body?.getReader();
+  if (!reader) return new Response(null, { status: 400 });
   let event: unknown;
   try {
-    const text = await request.text();
-    if (new TextEncoder().encode(text).length > 1024) {
-      return new Response(null, { status: 413 });
+    const buffer = new Uint8Array(1024);
+    let length = 0;
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      if (length + value.byteLength > buffer.byteLength) {
+        void reader.cancel().catch(() => {});
+        return new Response(null, { status: 413 });
+      }
+      buffer.set(value, length);
+      length += value.byteLength;
     }
-    event = JSON.parse(text);
+    event = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(buffer.subarray(0, length)));
   } catch {
     return new Response(null, { status: 400 });
+  } finally {
+    reader.releaseLock();
   }
   if (!event || typeof event !== "object" || Array.isArray(event)) {
     return new Response(null, { status: 400 });

@@ -73,8 +73,8 @@ export function ProjectCard({ project }: { project: Project }) {
           href={primaryUrl}
           target="_blank"
           rel="noreferrer noopener"
-          aria-label={project.title}
-          className="absolute inset-0 z-10"
+          aria-label={project.liveUrl ? `Visitar sitio de ${project.title}` : `Ver repositorio de ${project.title}`}
+          className="project-card-link absolute inset-0 z-10"
         />
       )}
     </article>

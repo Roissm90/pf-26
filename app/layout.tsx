@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { personalInfo } from "@/content/data";
+import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -13,8 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 const title = `${personalInfo.name} — ${personalInfo.role}`;
 
 export const metadata: Metadata = {
-  // EDITAR: reemplazá con tu dominio real una vez desplegado en Vercel.
-  metadataBase: new URL("https://tu-dominio.vercel.app"),
+  metadataBase: getSiteUrl(),
   title,
   description: personalInfo.tagline,
   openGraph: {

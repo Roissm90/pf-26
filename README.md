@@ -20,11 +20,17 @@ Subí tu CV en PDF como `public/cv.pdf` (la carpeta `public/` está vacía por a
 
 ### Dominio para SEO
 
-Una vez que tengas la URL final de Vercel, reemplazá `https://tu-dominio.vercel.app` en:
+Configura `SITE_URL=https://tu-dominio-real.com` en las variables de entorno de Vercel y vuelve a desplegar. El dominio se comparte entre los metadatos, el canonical del portfolio, robots y sitemap mediante [`lib/site-url.ts`](./lib/site-url.ts).
 
-- `app/layout.tsx` (`metadataBase`)
-- `app/sitemap.ts`
-- `app/robots.ts`
+Sin `SITE_URL`, se usa `VERCEL_PROJECT_PRODUCTION_URL`, luego `VERCEL_URL` y, en local, `http://localhost:3000`. Comprueba el canonical y el sitemap del despliegue. No se publica una fecha de modificación ficticia.
+
+### Seguridad
+
+El servidor limita los cuerpos de eventos a 1 KB durante su lectura. Las cabeceras comunes incluyen `nosniff`, protección contra embedding, política de referrer y una CSP básica que no bloquea los scripts de Next. Esta CSP no sustituye una política estricta de scripts contra XSS.
+
+Antes de publicar, configura en Vercel Firewall una regla de límite de solicitudes para `POST /api/events`, con un umbral acorde al tráfico previsto, y verifica su respuesta 429. Si tu plan no ofrece esa opción, hace falta un limitador con almacenamiento compartido. El código no incluye un límite global de frecuencia: un contador en memoria no protege de forma fiable entre instancias serverless.
+
+La auditoría actual no encuentra vulnerabilidades de producción. Los avisos de desarrollo provienen de `braces` en la cadena de ESLint; comprueba las actualizaciones compatibles antes de usar `npm audit fix --force`.
 
 ## Desarrollo local
 

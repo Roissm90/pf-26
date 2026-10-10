@@ -48,7 +48,7 @@ export default async function AnalyticsPage({ searchParams }: {
     <main className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6">
       <header className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-6">
         <div><h1 className="text-2xl font-semibold">Analitica</h1>
-          <p className="mt-2 text-sm text-muted-foreground">{total} eventos</p>
+          <p role="status" aria-atomic="true" className="mt-2 text-sm text-muted-foreground">{total} eventos</p>
         </div>
         <div className="flex items-center gap-2">
           <a href={pageUrl(page)} title="Actualizar" aria-label="Actualizar" className={iconButton}><RefreshCw className="h-4 w-4" /></a>

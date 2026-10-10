@@ -3,6 +3,7 @@ import { personalInfo } from "@/content/data";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const alt = `${personalInfo.name} - ${personalInfo.role}`;
 
 export default function OpengraphImage() {
   return new ImageResponse(

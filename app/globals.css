@@ -5,7 +5,7 @@
 :root {
   --background: #fafafa;
   --foreground: #09090b;
-  --muted: #71717a;
+  --muted: #3f3f46;
   --border: #e4e4e7;
   --card: #ffffff;
   --accent: #087f68;
@@ -98,9 +98,24 @@ h2 {
 }
 
 a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.project-card-link:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+@media (forced-colors: active) {
+  :is(a, button, input, select, textarea):focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
 }
 
 .contact-action {

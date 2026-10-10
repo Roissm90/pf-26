@@ -38,9 +38,9 @@ export function About() {
                   className="group flex items-center gap-4 rounded py-4 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-accent"
                 >
                   {item.format === "PDF" ? (
-                    <FileText aria-hidden="true" className="h-5 w-5 shrink-0 text-muted-foreground" />
+                    <FileText aria-hidden="true" className="h-5 w-5 shrink-0 text-muted-foreground transition-colors group-hover:text-accent" />
                   ) : (
-                    <GraduationCap aria-hidden="true" className="h-5 w-5 shrink-0 text-muted-foreground" />
+                    <GraduationCap aria-hidden="true" className="h-5 w-5 shrink-0 text-muted-foreground transition-colors group-hover:text-accent" />
                   )}
                   <span className="min-w-0 flex-1">
                     <span className="block break-words text-sm font-medium">{item.title}</span>

@@ -95,7 +95,7 @@ export function Hero() {
         data-analytics="navigation-about"
         href="#about"
         aria-label="Ir a Sobre mi"
-        className="mx-auto mt-20 w-fit items-center gap-2 text-xs text-muted-foreground flex"
+        className="mx-auto mt-20 flex h-11 w-11 items-center justify-center text-xs text-muted-foreground"
       >
         <ArrowDown className="h-3.5 w-3.5 animate-bounce" />
       </a>
