@@ -7,15 +7,15 @@ export function ProjectCard({ project }: { project: Project }) {
   const primaryUrl = project.liveUrl ?? project.repoUrl;
 
   return (
-    <article className="group relative -mx-4 flex cursor-pointer flex-col gap-4 rounded-xl px-4 py-6 transition-colors hover:bg-muted/5 sm:-mx-6 sm:flex-row sm:items-center sm:gap-6 sm:px-6">
-      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white p-2.5 ring-1 ring-border/50 self-start">
+    <article className={`group relative flex cursor-pointer flex-col gap-4 rounded-lg border p-6 transition-colors hover:border-accent focus-within:border-accent sm:flex-row sm:items-center sm:gap-6 ${project.featured ? "border-accent/30 bg-accent/5" : "border-border bg-card"}`}>
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center bg-white p-2.5 self-start">
         {project.imgUrl ? (
           <Image
             src={project.imgUrl}
             alt={`Logo de ${project.title}`}
             width={56}
             height={56}
-            className="h-full w-full object-contain grayscale transition-all duration-300 group-hover:grayscale-0"
+            className="h-full w-full object-contain"
           />
         ) : (
           <span className="text-sm font-semibold text-foreground/40">
@@ -26,21 +26,21 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <h3 className="font-medium tracking-tight transition-colors group-hover:text-accent">
+          <h3 className="text-xl font-semibold transition-colors group-hover:text-accent">
             {project.title}
           </h3>
           {project.featured && (
-            <span className="text-[10px] font-medium uppercase tracking-wider text-accent">
+            <span className="border-l border-accent/40 pl-2 font-mono text-[10px] font-medium uppercase text-accent">
               Reciente
             </span>
           )}
         </div>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
           {project.description}
         </p>
-        <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+        <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-2">
           {project.stack.map((tech) => (
-            <li key={tech} className="text-xs text-muted-foreground/60">
+            <li key={tech} className="font-mono text-xs text-muted-foreground">
               {tech}
             </li>
           ))}

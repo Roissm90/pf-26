@@ -8,7 +8,7 @@
   --muted: #71717a;
   --border: #e4e4e7;
   --card: #ffffff;
-  --accent: #7c3aed;
+  --accent: #087f68;
   --accent-foreground: #ffffff;
 }
 
@@ -18,7 +18,7 @@
   --muted: #a1a1aa;
   --border: #27272a;
   --card: #111113;
-  --accent: #a78bfa;
+  --accent: #6ee7b7;
   --accent-foreground: #0a0a0a;
 }
 
@@ -31,8 +31,8 @@
   --color-card: var(--card);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-display);
+  --font-mono: var(--font-display);
 }
 
 html {
@@ -43,7 +43,53 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-display), sans-serif;
+}
+
+h1,
+h2 {
+  font-weight: 600;
+  letter-spacing: 0 !important;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.contact-action {
+  display: flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  transition: background-color 200ms, color 200ms, border-color 200ms;
+}
+
+.contact-action:hover {
+  border-color: var(--foreground);
+  color: var(--foreground);
+}
+
+.contact-action[data-analytics="contact-whatsapp"],
+.contact-action[data-analytics="contact-phone"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.contact-action[data-analytics="contact-whatsapp"] {
+  background: var(--accent);
+  color: var(--accent-foreground);
 }
 
 button,

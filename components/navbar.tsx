@@ -83,7 +83,7 @@ export function Navbar() {
     <header
       ref={headerRef}
       onFocusCapture={() => setHidden(false)}
-      className={`sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${hidden && !open ? "-translate-y-full pointer-events-none" : "translate-y-0"}`}
+      className={`sticky top-0 z-50 border-b border-border/60 bg-background transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${hidden && !open ? "-translate-y-full pointer-events-none" : "translate-y-0"}`}
     >
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
         <Link href="#top" data-analytics="navigation-top" className="text-sm font-semibold tracking-tight">

@@ -9,11 +9,11 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="border-t border-border/60 px-6 py-10 min-[767px]:py-20 text-center"
+      className="border-t border-border/60 bg-accent/5 px-6 pt-10 pb-4 min-[767px]:pt-20 min-[767px]:pb-4 text-center"
     >
       <div className="mx-auto max-w-2xl">
         <Reveal>
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="text-4xl font-normal sm:text-5xl">
             ¿Hablamos?
           </h2>
           <p className="mt-4 text-muted-foreground text-pretty">
@@ -41,7 +41,7 @@ export function Contact() {
               rel="noreferrer noopener"
               aria-label="Enviar un WhatsApp"
               title="Enviar un WhatsApp"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent"
+              className="contact-action"
             >
               <WhatsappIcon aria-hidden="true" className="h-4 w-4" />
             </a>
@@ -50,7 +50,7 @@ export function Contact() {
               href={`tel:+${phoneNumber}`}
               aria-label={`Llamar a ${personalInfo.phone}`}
               title={`Llamar a ${personalInfo.phone}`}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent"
+              className="contact-action"
             >
               <Phone aria-hidden="true" className="h-4 w-4" />
             </a>
@@ -62,7 +62,8 @@ export function Contact() {
                 target={social.href.startsWith("http") ? "_blank" : undefined}
                 rel={social.href.startsWith("http") ? "noreferrer" : undefined}
                 aria-label={social.label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+                title={social.label}
+                className="contact-action"
               >
                 <social.icon className="h-4 w-4" />
               </a>

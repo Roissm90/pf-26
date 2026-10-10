@@ -2,7 +2,7 @@ import { personalInfo } from "@/content/data";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/60 py-8">
+    <footer className="py-8 bg-accent/5">
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-2 text-sm text-muted-foreground px-6">
         <p className="mr-auto ml-0">
           © {new Date().getFullYear()} {personalInfo.fullName}

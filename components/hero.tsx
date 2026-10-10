@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDown, Phone } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Download, Phone } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import { Reveal } from "@/components/motion/reveal";
 import { personalInfo, socials } from "@/content/data";
@@ -12,18 +12,13 @@ export function Hero() {
       id="top"
       className="relative overflow-hidden px-6 py-10 min-[767px]:py-20"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-accent/20 blur-[120px]"
-      />
-
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <p className="text-sm font-medium text-accent">{personalInfo.role}</p>
+          <p className="flex items-center gap-3 font-mono text-sm font-medium text-accent"><span aria-hidden="true" className="h-2 w-2 bg-accent" />{personalInfo.role}</p>
         </Reveal>
 
         <Reveal delay={0.08}>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
+          <h1 className="mt-6 max-w-2xl text-5xl font-normal leading-[1.08] text-balance sm:text-7xl">
             Hola, soy {personalInfo.name}.
           </h1>
         </Reveal>
@@ -39,17 +34,19 @@ export function Hero() {
             <Link
               data-analytics="navigation-projects"
               href="#projects"
-              className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-3 rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
             >
               Ver proyectos
+              <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
             </Link>
             <a
               data-analytics="resume-download"
               href={personalInfo.resumeUrl}
               download
-              className="rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:bg-muted/20"
+              className="inline-flex items-center gap-3 rounded-lg border border-border px-5 py-3 text-sm font-medium transition-colors hover:bg-muted/20"
             >
               Descargar CV
+              <Download aria-hidden="true" className="h-4 w-4" />
             </a>
           </div>
         </Reveal>
@@ -63,7 +60,7 @@ export function Hero() {
               rel="noreferrer noopener"
               aria-label="Enviar un WhatsApp"
               title="Enviar un WhatsApp"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent"
+              className="contact-action"
             >
               <WhatsappIcon aria-hidden="true" className="h-4 w-4" />
             </a>
@@ -72,7 +69,7 @@ export function Hero() {
               href={`tel:+${phoneNumber}`}
               aria-label={`Llamar a ${personalInfo.phone}`}
               title={`Llamar a ${personalInfo.phone}`}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent"
+              className="contact-action"
             >
               <Phone aria-hidden="true" className="h-4 w-4" />
             </a>
@@ -84,7 +81,8 @@ export function Hero() {
                 target={social.href.startsWith("http") ? "_blank" : undefined}
                 rel={social.href.startsWith("http") ? "noreferrer" : undefined}
                 aria-label={social.label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+                title={social.label}
+                className="contact-action"
               >
                 <social.icon className="h-4 w-4" />
               </a>
