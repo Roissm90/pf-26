@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+Portfolio personal para frontend developer. Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 + Motion, con modo claro/oscuro.
 
-First, run the development server:
+## Cómo editar el contenido
+
+Todo el texto editable vive en **un solo archivo**: [`content/data.ts`](./content/data.ts). No hace falta tocar ningún componente.
+
+Ahí vas a encontrar (marcado con comentarios `// EDITAR` donde no es obvio):
+
+- `personalInfo` — nombre, rol, tagline, bio corta, ubicación, email y la ruta a tu CV.
+- `socials` — links a GitHub, LinkedIn y email.
+- `skills` — tu stack agrupado por categoría.
+- `projects` — tus proyectos (título, descripción, stack, link a demo y a repo).
+- `experience` — tu experiencia laboral. Dejá el array vacío (`[]`) si todavía no tenés.
+
+### CV
+
+Subí tu CV en PDF como `public/cv.pdf` (la carpeta `public/` está vacía por ahora). El botón "Descargar CV" ya apunta a esa ruta.
+
+### Dominio para SEO
+
+Una vez que tengas la URL final de Vercel, reemplazá `https://tu-dominio.vercel.app` en:
+
+- `app/layout.tsx` (`metadataBase`)
+- `app/sitemap.ts`
+- `app/robots.ts`
+
+## Desarrollo local
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrí [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build de producción
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Desplegar en Vercel
 
-To learn more about Next.js, take a look at the following resources:
+1. Subí este proyecto a un repo de GitHub (o GitLab/Bitbucket).
+2. Entrá a [vercel.com/new](https://vercel.com/new), importá el repo y hacé clic en Deploy (Next.js se detecta automáticamente, sin configuración extra).
+3. Cada push a la rama principal despliega automáticamente.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Alternativa por CLI:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx vercel
+```
