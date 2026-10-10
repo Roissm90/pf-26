@@ -8,7 +8,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article className="group relative -mx-4 flex cursor-pointer flex-col gap-4 rounded-xl px-4 py-6 transition-colors hover:bg-muted/5 sm:-mx-6 sm:flex-row sm:items-center sm:gap-6 sm:px-6">
-      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white p-2.5 ring-1 ring-border/50">
+      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white p-2.5 ring-1 ring-border/50 self-start">
         {project.imgUrl ? (
           <Image
             src={project.imgUrl}
@@ -47,7 +47,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </ul>
       </div>
 
-      <div className="flex shrink-0 items-center gap-4 text-sm font-medium sm:pl-4">
+      <div className="flex shrink-0 items-center gap-4 text-sm font-medium sm:pl-4 self-end">
         {project.repoUrl && (
           <a
             href={project.repoUrl}
@@ -61,7 +61,7 @@ export function ProjectCard({ project }: { project: Project }) {
         )}
         {project.liveUrl && (
           <span className="inline-flex items-center gap-1 text-foreground">
-            Demo
+            Ver Site
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>
         )}
@@ -69,6 +69,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
       {primaryUrl && (
         <a
+          data-analytics={project.analyticsId}
           href={primaryUrl}
           target="_blank"
           rel="noreferrer noopener"

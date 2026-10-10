@@ -6,17 +6,19 @@ import { Projects } from "@/components/projects";
 import { Experience } from "@/components/experience";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
+import { AnalyticsTracker } from "@/components/analytics-tracker";
 
 export default function Home() {
   return (
     <>
+      <AnalyticsTracker />
       <Navbar />
       <main className="flex-1">
         <Hero />
         <About />
+        <Experience />
         <Skills />
         <Projects />
-        <Experience />
         <Contact />
       </main>
       <Footer />

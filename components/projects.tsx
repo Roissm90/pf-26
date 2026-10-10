@@ -8,7 +8,7 @@ const sortedProjects = [...projects].sort(
 
 export function Projects() {
   return (
-    <section id="projects" className="border-t border-border/60 px-6 py-20">
+    <section id="projects" className="border-t border-border/60 px-6 py-10 min-[767px]:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="text-2xl font-semibold tracking-tight">Proyectos</h2>

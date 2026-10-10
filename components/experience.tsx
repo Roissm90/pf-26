@@ -5,7 +5,7 @@ export function Experience() {
   if (experience.length === 0) return null;
 
   return (
-    <section id="experience" className="border-t border-border/60 px-6 py-20">
+    <section id="experience" className="border-t border-border/60 px-6 py-10 min-[767px]:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="text-2xl font-semibold tracking-tight">Experiencia</h2>
@@ -14,7 +14,7 @@ export function Experience() {
         <div className="mt-10 space-y-8">
           {experience.map((item, i) => (
             <Reveal key={`${item.company}-${item.role}`} delay={i * 0.08}>
-              <div className="flex flex-col gap-1 border-l border-border pl-6 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+              <div className="flex flex-col-reverse gap-1 border-l border-border pl-6 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
                 <div>
                   <h3 className="font-medium">{item.role}</h3>
                   <p className="text-sm text-muted-foreground">{item.company}</p>
@@ -22,7 +22,7 @@ export function Experience() {
                     {item.description}
                   </p>
                 </div>
-                <p className="shrink-0 text-sm text-muted-foreground">
+                <p className="shrink-0 text-sm sm:text-right">
                   {item.period}
                 </p>
               </div>
