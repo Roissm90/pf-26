@@ -91,14 +91,14 @@ export function Hero() {
         </Reveal>
       </div>
 
-      <Link
+      <a
         data-analytics="navigation-about"
         href="#about"
         aria-label="Ir a Sobre mi"
         className="mx-auto mt-20 w-fit items-center gap-2 text-xs text-muted-foreground flex"
       >
         <ArrowDown className="h-3.5 w-3.5 animate-bounce" />
-      </Link>
+      </a>
     </section>
   );
 }
