@@ -205,7 +205,7 @@ export const experience: ExperienceItem[] = [
   {
     role: "Frontend Intern",
     company: "WPP Production",
-    period: "04/23 — 10/24",
+    period: "04/24 — 10/24",
     description:
       "Formé parte del equipo de desarrollo frontend, colaborando en proyectos para clientes de distintos sectores. Pasé de tareas guiadas a resolver de forma autónoma necesidades técnicas y de UX, aplicando buenas prácticas de rendimiento y diseño responsive en cada entrega.",
   },
