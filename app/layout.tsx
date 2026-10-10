@@ -11,21 +11,26 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-const title = `${personalInfo.name} — ${personalInfo.role}`;
+const title = `${personalInfo.name} | ${personalInfo.role}`;
+const description = "Desarrollador frontend en Madrid. React, Next.js y experiencias web rápidas y accesibles. Descubre mi experiencia y proyectos.";
 
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
   title,
-  description: personalInfo.tagline,
+  description,
   openGraph: {
     title,
-    description: personalInfo.tagline,
+    description,
     type: "website",
+    url: getSiteUrl(),
+    siteName: personalInfo.name,
+    locale: "es_ES",
   },
   twitter: {
     card: "summary_large_image",
     title,
-    description: personalInfo.tagline,
+    description,
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${personalInfo.name} - ${personalInfo.role}` }],
   },
 };
 

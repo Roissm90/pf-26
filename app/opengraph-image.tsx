@@ -14,28 +14,34 @@ export default function OpengraphImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          padding: "80px",
-          background: "linear-gradient(135deg, #09090b 0%, #1e1033 100%)",
+          justifyContent: "space-between",
+          padding: "56px 72px",
+          background: "#09090b",
+          borderTop: "8px solid #6ee7b7",
           color: "#fafafa",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ fontSize: 28, color: "#a78bfa", fontWeight: 600 }}>
-          {personalInfo.role}
+        <div style={{ display: "flex", alignItems: "center", gap: 48 }}>
+          <div style={{ display: "flex", fontSize: 196, fontWeight: 700, color: "#6ee7b7", lineHeight: 1 }}>
+            {personalInfo.initials}
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", borderLeft: "2px solid #27272a", paddingLeft: 40 }}>
+            <div style={{ fontSize: 46, fontWeight: 700, maxWidth: 570, lineHeight: 1.2 }}>
+              {personalInfo.name}
+            </div>
+            <div style={{ fontSize: 28, color: "#6ee7b7", marginTop: 18 }}>
+              {personalInfo.role}
+            </div>
+          </div>
         </div>
-        <div style={{ fontSize: 64, fontWeight: 700, marginTop: 16 }}>
-          {personalInfo.name}
-        </div>
-        <div
-          style={{
-            fontSize: 28,
-            color: "#a1a1aa",
-            marginTop: 24,
-            maxWidth: 800,
-          }}
-        >
-          {personalInfo.tagline}
+        <div style={{ display: "flex", flexDirection: "column", borderTop: "2px solid #27272a", paddingTop: 30 }}>
+          <div style={{ fontSize: 28, color: "#e4e4e7", lineHeight: 1.5 }}>
+            {personalInfo.tagline}
+          </div>
+          <div style={{ display: "flex", fontSize: 22, color: "#a1a1aa", marginTop: 20 }}>
+            React · Next.js · {personalInfo.location}
+          </div>
         </div>
       </div>
     ),
