@@ -16,7 +16,7 @@ Ahí vas a encontrar (marcado con comentarios `// EDITAR` donde no es obvio):
 
 ### CV
 
-Subí tu CV en PDF como `public/cv.pdf` (la carpeta `public/` está vacía por ahora). El botón "Descargar CV" ya apunta a esa ruta.
+El CV y los certificados ya están en `public/`. Sustituye los PDF cuando necesites actualizarlos; el botón "Descargar CV" apunta a `/cv.pdf`.
 
 ### Dominio para SEO
 
@@ -49,9 +49,44 @@ npm run start
 
 ## Desplegar en Vercel
 
-1. Subí este proyecto a un repo de GitHub (o GitLab/Bitbucket).
-2. Entrá a [vercel.com/new](https://vercel.com/new), importá el repo y hacé clic en Deploy (Next.js se detecta automáticamente, sin configuración extra).
-3. Cada push a la rama principal despliega automáticamente.
+1. Importa el repositorio en [vercel.com/new](https://vercel.com/new), o abre su proyecto existente. Usa `main` como Production Branch y la raíz del repositorio como Root Directory.
+2. Selecciona el preset Next.js. Mantén la salida automática, `npm ci` para instalar y `npm run build` para compilar. No uses exportación estática: la analítica necesita funciones de servidor.
+3. Antes de desplegar, configura las variables siguientes en Settings > Environment Variables. Introduce los valores directamente en Vercel, nunca en Git ni en mensajes de chat.
+4. Despliega `main`. Si cambias variables, vuelve a desplegar: las variables `NEXT_PUBLIC_*` y los metadatos se incorporan durante el build.
+
+### Variables de producción
+
+La plantilla [.env.example](./.env.example) solo contiene valores ficticios. `.env.local` sigue ignorado por Git.
+
+| Variable | Valor en Production |
+| --- | --- |
+| `SITE_URL` | URL HTTPS pública definitiva, sin ruta. Si se omite, se usa el dominio de producción de Vercel. |
+| `NEXT_PUBLIC_SUPABASE_URL` | URL de tu proyecto Supabase. |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Clave publicable de Supabase. |
+| `SUPABASE_SECRET_KEY` | Clave secreta, solo de servidor. Nunca debe llevar prefijo `NEXT_PUBLIC_`. |
+| `ANALYTICS_ADMIN_USER_ID` | UUID exacto de tu usuario propietario, coincidente con la política RLS. |
+| `ANALYTICS_ALLOWED_ORIGIN` | El origen HTTPS desde el que enviarás eventos, sin barra final; normalmente igual a `SITE_URL`. |
+| `NEXT_PUBLIC_ANALYTICS_ENABLED` | `true` para registrar clics reales en producción. |
+
+Si todavía no conoces el dominio, puedes hacer el primer despliegue con la captura desactivada. Después configura el origen definitivo y activa la captura en un nuevo despliegue. Redirige los dominios alternativos al principal: la API solo admite un origen exacto.
+
+### Previews y Supabase
+
+- En Preview configura `NEXT_PUBLIC_ANALYTICS_ENABLED=false` para no mezclar pruebas con eventos reales.
+- Si quieres probar el panel en Preview, usa preferentemente otro proyecto Supabase con sus propias claves, propietario y RLS. Si omites esas variables, las rutas privadas no estarán operativas.
+- Una preview protegida por Vercel Authentication no es accesible para los rastreadores de WhatsApp. Comprueba la tarjeta social en el despliegue público de producción.
+- En Supabase configura Site URL con el dominio público, desactiva registros de usuarios y confirma que RLS permite leer solo al propietario. Consulta [GUIA-ANALITICA.md](./GUIA-ANALITICA.md) para el SQL y la configuración completa.
+- Activa el límite de solicitudes de `POST /api/events` en Vercel Firewall según las opciones disponibles en tu plan.
+
+### Comprobaciones después del despliegue
+
+- La página abre con HTTPS, los siete logos cargan y los PDF se descargan.
+- El canonical, `/robots.txt` y `/sitemap.xml` apuntan al dominio definitivo.
+- `/opengraph-image` devuelve una imagen PNG de 1200 x 630 con tus iniciales. Al compartir, el título y la descripción son los del portfolio; WhatsApp puede conservar una vista anterior en caché.
+- Sin sesión, `/analytics` redirige al login y `/analytics/export` devuelve 401.
+- Inicia sesión con tu cuenta propietaria y comprueba lectura, búsqueda y exportación. No borres registros reales para probar el despliegue.
+- Cuando realices un clic real con captura activada, verifica que la solicitud devuelve 204 y aparece en el panel. Un 403 suele indicar que el origen no coincide.
+- Comprueba las cabeceras de seguridad y el menú con Tab y Escape en el dominio público.
 
 Alternativa por CLI:
 

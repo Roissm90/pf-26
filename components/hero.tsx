@@ -1,35 +1,36 @@
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Download, Phone } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
-import { Reveal } from "@/components/motion/reveal";
+import { HeroEntrance, TypewriterText } from "@/components/motion/hero-entrance";
 import { personalInfo, socials } from "@/content/data";
 
 export function Hero() {
   const phoneNumber = personalInfo.phone.replace(/\D/g, "");
 
   return (
+    <HeroEntrance>
     <section
       id="top"
       className="relative overflow-hidden px-6 py-10 min-[767px]:py-20"
     >
       <div className="mx-auto max-w-3xl">
-        <Reveal>
-          <p className="flex items-center gap-3 font-mono text-sm font-medium text-accent"><span aria-hidden="true" className="h-2 w-2 bg-accent" />{personalInfo.role}</p>
-        </Reveal>
+        <div>
+          <p className="flex items-center gap-3 font-mono text-sm font-medium text-accent"><span aria-hidden="true" className="h-2 w-2 bg-accent" /><TypewriterText text={personalInfo.role} /></p>
+        </div>
 
-        <Reveal delay={0.08}>
+        <div>
           <h1 className="mt-6 max-w-2xl text-5xl font-normal leading-[1.08] text-balance sm:text-7xl">
-            Hola, soy {personalInfo.name}.
+            <TypewriterText text={`Hola, soy ${personalInfo.name}.`} />
           </h1>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.16}>
+        <div data-hero-reveal>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground text-pretty">
             {personalInfo.tagline}
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.24}>
+        <div data-hero-reveal>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
               data-analytics="navigation-projects"
@@ -49,9 +50,9 @@ export function Hero() {
               <Download aria-hidden="true" className="h-4 w-4" />
             </a>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.32}>
+        <div data-hero-reveal>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               data-analytics="contact-whatsapp"
@@ -88,10 +89,11 @@ export function Hero() {
               </a>
             ))}
           </div>
-        </Reveal>
+        </div>
       </div>
 
       <a
+        data-hero-reveal
         data-analytics="navigation-about"
         href="#about"
         aria-label="Ir a Sobre mi"
@@ -100,5 +102,6 @@ export function Hero() {
         <ArrowDown className="h-3.5 w-3.5 animate-bounce" />
       </a>
     </section>
+    </HeroEntrance>
   );
 }
