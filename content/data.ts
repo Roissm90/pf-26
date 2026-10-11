@@ -110,7 +110,7 @@ export const projects: Project[] = [
     title: "Endesa",
     analyticsId: "project-endesa",
     description:
-      "Desarrollo de diferentes landings destinadas a empresas para Endesa, optimizando la experiencia de usuario y el rendimiento.",
+      "Creación de landings en WordPress con envíos de analíticay componentes reutilizables para campañas.",
     stack: ["WordPress", "AEM", "PHP"],
     liveUrl: "https://endesaluzempresas.com/",
     imgUrl: "https://portfolio-santiago-martinez-rois.wuaze.com/wp-content/uploads/2026/04/Nuevo-logo_Endesa.png",
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     title: "Lola Casademunt",
     analyticsId: "project-lola-casademunt",
     description:
-      "Desarrollo del sitio web de la marca de moda Lola Casademunt, implementando un diseño responsive y optimizando la experiencia de usuario.",
+      "Desarrollo de secciones y plantillas Shopify con Liquid, adaptadas a los diseños de la marca.",
     stack: ["Shopify", "Liquid", "Scss"],
     liveUrl: "https://www.lolacasademunt.com/",
     imgUrl: "https://portfolio-santiago-martinez-rois.wuaze.com/wp-content/uploads/2026/10/logo-lola.png",
@@ -138,7 +138,7 @@ export const projects: Project[] = [
     title: "BSH",
     analyticsId: "project-bsh",
     description:
-      "Desarrollo de una landing de BSH, destinada a la participación y votación de proyectos con IA",
+      "Implementación del flujo de participación y votación, con animaciones GSAP.",
     stack: ["PHP", "JavaScript", "HTML5", "Scss", "GSAP"],
     liveUrl: "https://makeitreal.schwaebisch-hall.de/",
     imgUrl: "https://portfolio-santiago-martinez-rois.wuaze.com/wp-content/uploads/2026/10/BSH.png",
