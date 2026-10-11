@@ -2,30 +2,31 @@ import { ArrowDown, ArrowUpRight, Download, Phone } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import { HeroEntrance, TypewriterText } from "@/components/motion/hero-entrance";
 import { personalInfo, socials } from "@/content/data";
+import { t, type LanguageProps } from "@/lib/translations";
 
-export function Hero() {
+export function Hero({ language = "es" }: LanguageProps) {
   const phoneNumber = personalInfo.phone.replace(/\D/g, "");
 
   return (
     <HeroEntrance>
     <section
       id="top"
-      className="relative overflow-hidden px-6 py-10 min-[767px]:py-20"
+      className="relative overflow-hidden px-6 py-10 min-[767px]:py-20 min-h-svh flex flex-col justify-between"
     >
       <div className="mx-auto max-w-3xl">
         <div>
-          <p className="flex items-center gap-3 font-mono text-sm font-medium text-accent"><span aria-hidden="true" className="h-2 w-2 bg-accent" /><TypewriterText text={personalInfo.role} /></p>
+          <p className="flex items-center gap-3 font-mono text-sm font-medium text-accent"><span aria-hidden="true" className="h-2 w-2 bg-accent" /><TypewriterText text={t(language, personalInfo.role)} /></p>
         </div>
 
         <div>
           <h1 className="mt-6 max-w-2xl text-5xl font-normal leading-[1.08] text-balance sm:text-7xl">
-            <TypewriterText text={`Hola, soy ${personalInfo.name}.`} />
+            <TypewriterText text={`${t(language, "Hola, soy")} ${personalInfo.name}.`} />
           </h1>
         </div>
 
         <div data-hero-reveal>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground text-pretty">
-            {personalInfo.tagline}
+            {t(language, personalInfo.tagline)}
           </p>
         </div>
 
@@ -36,7 +37,7 @@ export function Hero() {
               href="#projects"
               className="inline-flex items-center gap-3 rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
             >
-              Ver proyectos
+              {t(language, "Ver proyectos")}
               <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
             </a>
             <a
@@ -45,7 +46,7 @@ export function Hero() {
               download
               className="inline-flex items-center gap-3 rounded-lg border border-border px-5 py-3 text-sm font-medium transition-colors hover:bg-muted/20"
             >
-              Descargar CV
+              {t(language, "Descargar CV")}
               <Download aria-hidden="true" className="h-4 w-4" />
             </a>
           </div>
@@ -58,8 +59,8 @@ export function Hero() {
               href={`https://wa.me/${phoneNumber}`}
               target="_blank"
               rel="noreferrer noopener"
-              aria-label="Enviar un WhatsApp"
-              title="Enviar un WhatsApp"
+              aria-label={t(language, "Enviar un WhatsApp")}
+              title={t(language, "Enviar un WhatsApp")}
               className="contact-action"
             >
               <WhatsappIcon aria-hidden="true" className="h-4 w-4" />
@@ -67,8 +68,8 @@ export function Hero() {
             <a
               data-analytics="contact-phone"
               href={`tel:+${phoneNumber}`}
-              aria-label={`Llamar a ${personalInfo.phone}`}
-              title={`Llamar a ${personalInfo.phone}`}
+              aria-label={`${t(language, "Llamar a")} ${personalInfo.phone}`}
+              title={`${t(language, "Llamar a")} ${personalInfo.phone}`}
               className="contact-action"
             >
               <Phone aria-hidden="true" className="h-4 w-4" />
@@ -95,10 +96,10 @@ export function Hero() {
         data-hero-reveal
         data-analytics="navigation-about"
         href="#about"
-        aria-label="Ir a Sobre mi"
-        className="mx-auto mt-20 flex h-11 w-11 items-center justify-center text-xs text-muted-foreground"
+        aria-label={t(language, "Ir a Sobre mí")}
+        className="mx-auto mt-auto mb-10 flex h-11 w-11 items-center justify-center text-accent"
       >
-        <ArrowDown className="h-3.5 w-3.5 animate-bounce" />
+        <ArrowDown className="h-6 w-6 animate-bounce" />
       </a>
     </section>
     </HeroEntrance>

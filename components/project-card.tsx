@@ -2,8 +2,9 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { GithubIcon } from "@/components/icons";
 import type { Project } from "@/content/data";
+import { t, type LanguageProps } from "@/lib/translations";
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, language = "es" }: { project: Project } & LanguageProps) {
   const primaryUrl = project.liveUrl ?? project.repoUrl;
 
   return (
@@ -12,7 +13,7 @@ export function ProjectCard({ project }: { project: Project }) {
         {project.imgUrl ? (
           <Image
             src={project.imgUrl}
-            alt={`Logo de ${project.title}`}
+            alt={`${t(language, "Logo de")} ${project.title}`}
             width={56}
             height={56}
             className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-150 group-focus-within:scale-150 motion-reduce:transform-none motion-reduce:transition-none"
@@ -31,12 +32,12 @@ export function ProjectCard({ project }: { project: Project }) {
           </h3>
           {project.featured && (
             <span className="border-l border-accent/40 pl-2 font-mono text-[10px] font-medium uppercase text-accent">
-              Reciente
+              {t(language, "Reciente")}
             </span>
           )}
         </div>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          {project.description}
+          {t(language, project.description)}
         </p>
         <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-2">
           {project.stack.map((tech) => (
@@ -53,7 +54,7 @@ export function ProjectCard({ project }: { project: Project }) {
             href={project.repoUrl}
             target="_blank"
             rel="noreferrer noopener"
-            aria-label={`Código de ${project.title}`}
+            aria-label={`${t(language, "Código de")} ${project.title}`}
             className="relative z-20 text-muted-foreground transition-colors hover:text-foreground"
           >
             <GithubIcon className="h-4 w-4" />
@@ -61,7 +62,7 @@ export function ProjectCard({ project }: { project: Project }) {
         )}
         {project.liveUrl && (
           <span className="inline-flex items-center gap-1 text-foreground">
-            Ver Site
+            {t(language, "Ver Site")}
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>
         )}
@@ -73,7 +74,7 @@ export function ProjectCard({ project }: { project: Project }) {
           href={primaryUrl}
           target="_blank"
           rel="noreferrer noopener"
-          aria-label={project.liveUrl ? `Visitar sitio de ${project.title}` : `Ver repositorio de ${project.title}`}
+          aria-label={`${project.liveUrl ? t(language, "Visitar sitio de") : t(language, "Ver repositorio de")} ${project.title}`}
           className="project-card-link absolute inset-0 z-10"
         />
       )}

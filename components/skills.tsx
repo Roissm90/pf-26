@@ -1,7 +1,8 @@
 import { Reveal } from "@/components/motion/reveal";
 import { skills } from "@/content/data";
+import { t, type LanguageProps } from "@/lib/translations";
 
-export function Skills() {
+export function Skills({ language = "es" }: LanguageProps) {
   return (
     <section id="skills" className="border-t border-border/60 px-6 py-10 min-[767px]:py-20">
       <div className="mx-auto max-w-3xl">
@@ -13,7 +14,7 @@ export function Skills() {
           {skills.map((group, i) => (
             <Reveal key={group.category} delay={i * 0.08}>
               <h3 className="text-sm font-medium text-muted-foreground">
-                {group.category}
+                {t(language, group.category)}
               </h3>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {group.items.map((item) => (
@@ -21,7 +22,7 @@ export function Skills() {
                     key={item}
                     className="rounded-full border border-border px-3 py-1 text-sm"
                   >
-                    {item}
+                    {t(language, item)}
                   </li>
                 ))}
               </ul>

@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LanguageToggle } from "@/components/language-toggle";
 import { navigationLinks, personalInfo } from "@/content/data";
+import { t, type LanguageProps } from "@/lib/translations";
 
-export function Navbar() {
+export function Navbar({ language = "es" }: LanguageProps) {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -94,7 +96,7 @@ export function Navbar() {
           {personalInfo.initials}
         </a>
 
-        <nav aria-label="Navegacion principal" className="hidden items-center gap-5 text-sm text-muted-foreground lg:flex lg:gap-8 ml-[8%] mr-auto">
+        <nav aria-label={t(language, "Navegación principal")} className="hidden items-center gap-5 text-sm text-muted-foreground lg:flex lg:gap-8 ml-[13.5%] mr-auto">
           {navigationLinks.map((link) => (
             <a
               key={link.href}
@@ -102,25 +104,27 @@ export function Navbar() {
               href={link.href}
               className="relative transition-colors hover:text-foreground focus-visible:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-current after:content-[''] after:transition-[width] after:duration-300 after:ease-out hover:after:w-full focus-visible:after:w-full motion-reduce:after:transition-none"
             >
-              {link.label}
+              {t(language, link.label)}
             </a>
           ))}
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <ThemeToggle />
+          <ThemeToggle language={language} />
+          <LanguageToggle language={language} />
           <a
             data-analytics="resume-download"
             href={personalInfo.resumeUrl}
             download
             className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
           >
-            Descargar CV
+            {t(language, "Descargar CV")}
           </a>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <ThemeToggle />
+          <ThemeToggle language={language} />
+          <LanguageToggle language={language} />
           <button
             ref={menuButtonRef}
             type="button"
@@ -128,7 +132,7 @@ export function Navbar() {
               setHidden(false);
               setOpen((value) => !value);
             }}
-            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-label={open ? t(language, "Cerrar menú") : t(language, "Abrir menú")}
             aria-expanded={open}
             aria-controls="mobile-navigation"
             className="relative flex h-9 w-9 items-center justify-center rounded-full border border-border transition-colors duration-200 hover:bg-muted/20 active:bg-muted/30"
@@ -141,7 +145,7 @@ export function Navbar() {
 
         <nav
           id="mobile-navigation"
-          aria-label="Navegacion movil"
+          aria-label={t(language, "Navegación móvil")}
           aria-hidden={!open}
           inert={!open}
           style={{ clipPath: open ? "inset(0 0 0 0)" : "inset(0 0 100% 0)" }}
@@ -155,7 +159,7 @@ export function Navbar() {
               onClick={() => setOpen(false)}
               className="rounded-lg py-2 text-sm text-muted-foreground transition-colors duration-200 hover:bg-muted/20 hover:text-foreground active:bg-muted/30"
             >
-              {link.label}
+              {t(language, link.label)}
             </a>
           ))}
           <a
@@ -165,7 +169,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             className="mt-auto rounded-full bg-foreground px-4 py-2 text-center text-sm font-medium text-background transition-opacity duration-200 hover:opacity-90"
           >
-            Descargar CV
+            {t(language, "Descargar CV")}
           </a>
         </nav>
     </header>

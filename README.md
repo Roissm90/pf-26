@@ -14,6 +14,25 @@ Ahí vas a encontrar (marcado con comentarios `// EDITAR` donde no es obvio):
 - `projects` — tus proyectos (título, descripción, stack, link a demo y a repo).
 - `experience` — tu experiencia laboral. Dejá el array vacío (`[]`) si todavía no tenés.
 
+### Traduccion local ES / EN
+
+El selector junto al tema abre `/` (espanol) o `/en` (ingles), conservando el ancla actual. El contenido original se mantiene en `content/data.ts` y los textos de interfaz en los componentes: no hay una segunda version manual de los componentes ni de los datos.
+
+Despues de modificar textos, ejecuta:
+
+```bash
+npm run translate
+npm run translations:check
+```
+
+El primer comando ejecuta localmente `Xenova/m2m100_418M` (modelo M2M100 con licencia MIT) mediante Transformers.js. La primera ejecucion descarga varios cientos de MB; despues reutiliza `.cache/translation-model`, ignorada por Git. Necesita conexion para esa descarga inicial, espacio en disco y memoria para ejecutar el modelo. No utiliza claves, APIs de pago ni cuotas por peticion. Esto no elimina los costes que pudiera tener tu alojamiento habitual.
+
+El resultado queda en `content/translations.generated.json`, que debe incluirse en Git antes del despliegue. Solo se traducen entradas nuevas o modificadas y se conservan las correcciones de las entradas existentes. Revisa las traducciones nuevas antes de publicar: el modelo puede equivocarse, especialmente con cargos, siglas y textos legales. La version inicial se ha revisado; los cambios futuros no tienen una garantia automatica de calidad.
+
+`npm run build` comprueba que el diccionario este actualizado, pero no descarga ni ejecuta el modelo. Los visitantes reciben el ingles ya generado, sin llamadas de traduccion ni descarga del modelo. Los nombres de proyectos, enlaces, contactos y tecnologias se mantienen. El PDF del CV y las imagenes no se traducen.
+
+El idioma HTML se determina por la ruta mediante `proxy.ts`. La lectura de esa cabecera en el layout implica renderizado de las paginas por peticion; la traduccion sigue siendo completamente pregenerada.
+
 ### CV
 
 El CV y los certificados ya están en `public/`. Sustituye los PDF cuando necesites actualizarlos; el botón "Descargar CV" apunta a `/cv.pdf`.

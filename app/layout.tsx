@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { personalInfo } from "@/content/data";
@@ -34,10 +35,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const language = (await headers()).get("x-portfolio-language") === "en" ? "en" : "es";
   return (
     <html
-      lang="es"
+      lang={language}
       suppressHydrationWarning
       className={`${spaceGrotesk.variable} h-full antialiased`}
     >

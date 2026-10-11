@@ -2,8 +2,9 @@ import { Phone } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import { Reveal } from "@/components/motion/reveal";
 import { personalInfo, socials } from "@/content/data";
+import { t, type LanguageProps } from "@/lib/translations";
 
-export function Contact() {
+export function Contact({ language = "es" }: LanguageProps) {
   const phoneNumber = personalInfo.phone.replace(/\D/g, "");
 
   return (
@@ -14,12 +15,12 @@ export function Contact() {
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="text-4xl font-normal sm:text-5xl">
-            ¿Hablamos?
+            {t(language, "¿Hablamos?")}
           </h2>
           <p className="mt-4 text-muted-foreground text-pretty">
-            Estoy abierto a nuevas oportunidades.
+            {t(language, "Estoy abierto a nuevas oportunidades.")}
             <br></br>
-            Contáctame y te respondo a la mayor brevedad posible.
+            {t(language, "Contáctame y te respondo a la mayor brevedad posible.")}
           </p>
         </Reveal>
 
@@ -40,8 +41,8 @@ export function Contact() {
               href={`https://wa.me/${phoneNumber}`}
               target="_blank"
               rel="noreferrer noopener"
-              aria-label="Enviar un WhatsApp"
-              title="Enviar un WhatsApp"
+              aria-label={t(language, "Enviar un WhatsApp")}
+              title={t(language, "Enviar un WhatsApp")}
               className="contact-action"
             >
               <WhatsappIcon aria-hidden="true" className="h-4 w-4" />
@@ -49,8 +50,8 @@ export function Contact() {
             <a
               data-analytics="contact-phone"
               href={`tel:+${phoneNumber}`}
-              aria-label={`Llamar a ${personalInfo.phone}`}
-              title={`Llamar a ${personalInfo.phone}`}
+              aria-label={`${t(language, "Llamar a")} ${personalInfo.phone}`}
+              title={`${t(language, "Llamar a")} ${personalInfo.phone}`}
               className="contact-action"
             >
               <Phone aria-hidden="true" className="h-4 w-4" />

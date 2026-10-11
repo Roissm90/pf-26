@@ -2,6 +2,11 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function proxy(request: NextRequest) {
+  if (request.nextUrl.pathname === "/" || request.nextUrl.pathname === "/en") {
+    const headers = new Headers(request.headers);
+    headers.set("x-portfolio-language", request.nextUrl.pathname === "/en" ? "en" : "es");
+    return NextResponse.next({ request: { headers } });
+  }
   let response = NextResponse.next({ request });
   response.headers.set("Cache-Control", "private, no-store");
   const supabase = createServerClient(
@@ -32,4 +37,4 @@ export async function proxy(request: NextRequest) {
   return response;
 }
 
-export const config = { matcher: ["/analytics/:path*"] };
+export const config = { matcher: ["/", "/en", "/analytics/:path*"] };
