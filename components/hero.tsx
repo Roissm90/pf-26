@@ -3,6 +3,7 @@ import { WhatsappIcon } from "@/components/icons";
 import { HeroEntrance, TypewriterText } from "@/components/motion/hero-entrance";
 import { personalInfo, socials } from "@/content/data";
 import { t, type LanguageProps } from "@/lib/translations";
+import { SecretCommand } from "@/components/secret-command";
 
 export function Hero({ language = "es" }: LanguageProps) {
   const phoneNumber = personalInfo.phone.replace(/\D/g, "");
@@ -15,7 +16,7 @@ export function Hero({ language = "es" }: LanguageProps) {
     >
       <div className="mx-auto max-w-3xl">
         <div>
-          <p className="flex items-center gap-3 font-mono text-sm font-medium text-accent"><span aria-hidden="true" className="h-2 w-2 bg-accent" /><TypewriterText text={t(language, personalInfo.role)} /></p>
+          <div className="flex items-center gap-3 font-mono text-sm font-medium text-accent"><span aria-hidden="true" className="h-2 w-2 bg-accent" /><TypewriterText text={t(language, personalInfo.role)} /><SecretCommand language={language} /></div>
         </div>
 
         <div>

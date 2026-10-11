@@ -2,6 +2,16 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function proxy(request: NextRequest) {
+  if (request.nextUrl.pathname === "/game") {
+    const ticket = request.nextUrl.searchParams.get("entry");
+    const cookie = request.cookies.get("game-entry")?.value;
+    const response = ticket && cookie && ticket === cookie
+      ? NextResponse.next()
+      : NextResponse.redirect(new URL(request.nextUrl.searchParams.get("from") === "en" ? "/en" : "/", request.url));
+    response.cookies.set("game-entry", "", { path: "/game", maxAge: 0, httpOnly: true, sameSite: "strict", secure: process.env.NODE_ENV === "production" });
+    response.headers.set("Cache-Control", "private, no-store");
+    return response;
+  }
   if (request.nextUrl.pathname === "/" || request.nextUrl.pathname === "/en") {
     const headers = new Headers(request.headers);
     headers.set("x-portfolio-language", request.nextUrl.pathname === "/en" ? "en" : "es");
@@ -37,4 +47,4 @@ export async function proxy(request: NextRequest) {
   return response;
 }
 
-export const config = { matcher: ["/", "/en", "/analytics/:path*"] };
+export const config = { matcher: ["/", "/en", "/game", "/analytics/:path*"] };
