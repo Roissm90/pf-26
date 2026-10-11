@@ -12,14 +12,14 @@ export function Projects() {
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="text-3xl font-normal sm:text-4xl">Proyectos</h2>
-          <p className="mt-2 text-muted-foreground">
+          {/*<p className="mt-2 text-muted-foreground">
             Algunas cosas que construí recientemente.
-          </p>
+          </p>*/}
         </Reveal>
 
-        <div className="mt-10 space-y-4">
+        <div className="mt-4 sm:mt-8 space-y-4">
           {sortedProjects.map((project, i) => (
-            <Reveal key={project.title} delay={i * 0.05}>
+            <Reveal key={project.title} delay={i * 0.05} className="last:[&>article]:border-b-0">
               <ProjectCard project={project} />
             </Reveal>
           ))}

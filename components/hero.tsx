@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Download, Phone } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import { HeroEntrance, TypewriterText } from "@/components/motion/hero-entrance";
@@ -32,14 +31,14 @@ export function Hero() {
 
         <div data-hero-reveal>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link
+            <a
               data-analytics="navigation-projects"
               href="#projects"
               className="inline-flex items-center gap-3 rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
             >
               Ver proyectos
               <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
-            </Link>
+            </a>
             <a
               data-analytics="resume-download"
               href={personalInfo.resumeUrl}

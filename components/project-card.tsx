@@ -7,15 +7,15 @@ export function ProjectCard({ project }: { project: Project }) {
   const primaryUrl = project.liveUrl ?? project.repoUrl;
 
   return (
-    <article className={`group relative flex cursor-pointer flex-col gap-4 rounded-lg border p-6 transition-colors hover:border-accent focus-within:border-accent sm:flex-row sm:items-center sm:gap-6 ${project.featured ? "border-accent/30 bg-accent/5" : "border-border bg-card"}`}>
-      <div className="flex h-16 w-16 shrink-0 items-center justify-center bg-white p-2.5 self-start">
+    <article className={`group relative flex cursor-pointer flex-col gap-4 border-b p-6 transition-colors hover:border-accent focus-within:border-accent sm:flex-row sm:items-center sm:gap-6 ${project.featured ? "border-accent/30" : "border-border"}`}>
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden bg-white p-2.5 self-start">
         {project.imgUrl ? (
           <Image
             src={project.imgUrl}
             alt={`Logo de ${project.title}`}
             width={56}
             height={56}
-            className="h-full w-full object-contain"
+            className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-150 group-focus-within:scale-150 motion-reduce:transform-none motion-reduce:transition-none"
           />
         ) : (
           <span className="text-sm font-semibold text-foreground/40">
@@ -40,7 +40,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </p>
         <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-2">
           {project.stack.map((tech) => (
-            <li key={tech} className="font-mono text-xs text-muted-foreground">
+            <li key={tech} className="font-mono text-xs text-muted-foreground rounded-full border border-border px-3 py-1">
               {tech}
             </li>
           ))}

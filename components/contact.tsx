@@ -17,8 +17,9 @@ export function Contact() {
             ¿Hablamos?
           </h2>
           <p className="mt-4 text-muted-foreground text-pretty">
-            Estoy abierto a nuevas oportunidades y colaboraciones. Escribime y
-            te respondo a la mayor brevedad posible.
+            Estoy abierto a nuevas oportunidades.
+            <br></br>
+            Contáctame y te respondo a la mayor brevedad posible.
           </p>
         </Reveal>
 

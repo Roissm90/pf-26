@@ -70,32 +70,27 @@ export const skills: SkillGroup[] = [
   {
     category: "Frontend",
     items: [
-      "HTML5",
-      "CSS3",
-      "JavaScript (ES6+)",
       "React",
       "Next.js",
       "TypeScript",
-    ],
-  },
-  {
-    category: "Estilos y Animación",
-    items: [
+      "JavaScript (ES6+)",
+      "HTML/CSS",
       "Tailwind CSS",
       "Sass/SCSS",
-      "Styled Components",
       "GSAP",
-      "Framer Motion",
-      "Diseño Responsive",
     ],
   },
   {
-    category: "Calidad",
-    items: ["Vitest", "Testing Library", "Playwright", "ESLint", "Accesibilidad (a11y)"],
+    category: "CMS y E-commerce",
+    items: ["WordPress", "Shopify", "AEM", "PHP"],
   },
   {
-    category: "Herramientas",
-    items: ["Git", "Figma", "Vercel", "Docker", "Vite", "Storybook"],
+    category: "Herramientas y Calidad",
+    items: ["Git", "Figma", "Storybook", "Playwright", "Vitest", "Accesibilidad (a11y)"],
+  },
+  {
+    category: "IA aplicada",
+    items: ["Context Engineering", "AI Agents", "MCP"],
   },
 ];
 

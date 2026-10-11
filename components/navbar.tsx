@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { navigationLinks, personalInfo } from "@/content/data";
@@ -91,20 +90,20 @@ export function Navbar() {
       className={`sticky top-0 z-50 border-b border-border/60 bg-background transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${hidden && !open ? "-translate-y-full pointer-events-none" : "translate-y-0"}`}
     >
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <Link href="#top" data-analytics="navigation-top" className="text-sm font-semibold tracking-tight">
+        <a href="#top" data-analytics="navigation-top" className="text-sm font-semibold tracking-tight">
           {personalInfo.initials}
-        </Link>
+        </a>
 
         <nav aria-label="Navegacion principal" className="hidden items-center gap-5 text-sm text-muted-foreground lg:flex lg:gap-8 ml-[8%] mr-auto">
           {navigationLinks.map((link) => (
-            <Link
+            <a
               key={link.href}
               data-analytics={link.analyticsId}
               href={link.href}
-              className="transition-colors hover:text-foreground"
+              className="relative transition-colors hover:text-foreground focus-visible:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-current after:content-[''] after:transition-[width] after:duration-300 after:ease-out hover:after:w-full focus-visible:after:w-full motion-reduce:after:transition-none"
             >
               {link.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
@@ -149,7 +148,7 @@ export function Navbar() {
           className={`absolute inset-x-0 top-full flex h-[calc(100svh-64px)] flex-col gap-1 overscroll-contain overflow-y-auto border-b border-border/60 bg-background px-6 py-4 shadow-lg shadow-black/10 transition-[opacity,transform,clip-path,visibility] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0 pointer-events-none"}`}
         >
           {navigationLinks.map((link) => (
-            <Link
+            <a
               key={link.href}
               data-analytics={link.analyticsId}
               href={link.href}
@@ -157,7 +156,7 @@ export function Navbar() {
               className="rounded-lg py-2 text-sm text-muted-foreground transition-colors duration-200 hover:bg-muted/20 hover:text-foreground active:bg-muted/30"
             >
               {link.label}
-            </Link>
+            </a>
           ))}
           <a
             data-analytics="resume-download"
