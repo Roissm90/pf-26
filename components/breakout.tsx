@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, Heart, Pause, Play, RotateCcw } from "lucide-react";
 import type PhaserTypes from "phaser";
+import { trackEvent } from "@/lib/track-event";
 
 type Status = "loading" | "ready" | "playing" | "paused" | "won" | "lost" | "error";
 type Hud = { status: Status; score: number; lives: number };
@@ -11,6 +12,7 @@ type Controls = { play: () => void; pause: () => void; restart: () => void };
 export function Breakout({ english }: { english: boolean }) {
   const host = useRef<HTMLDivElement>(null);
   const controls = useRef<Controls | null>(null);
+  const discovered = useRef(false);
   const [hud, setHud] = useState<Hud>({ status: "loading", score: 0, lives: 3 });
 
   useEffect(() => {
@@ -115,6 +117,10 @@ export function Breakout({ english }: { english: boolean }) {
           };
           this.dockBall();
           this.publish();
+          if (!discovered.current) {
+            discovered.current = true;
+            trackEvent("game-discovered");
+          }
         }
 
         private buildBricks() {

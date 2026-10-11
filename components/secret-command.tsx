@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import { unlockGame } from "@/app/game/actions";
 import type { Language } from "@/lib/translations";
+import { trackEvent } from "@/lib/track-event";
 
 export function SecretCommand({ language }: { language: Language }) {
-  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [command, setCommand] = useState("");
   const [invalid, setInvalid] = useState(false);
@@ -14,6 +13,7 @@ export function SecretCommand({ language }: { language: Language }) {
   const hovered = useRef(false);
   const trigger = useRef<HTMLButtonElement>(null);
   const input = useRef<HTMLInputElement>(null);
+  const discovered = useRef(false);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -29,7 +29,12 @@ export function SecretCommand({ language }: { language: Language }) {
   }, []);
 
   useEffect(() => {
-    if (open) input.current?.focus();
+    if (!open) return;
+    input.current?.focus();
+    if (!discovered.current) {
+      discovered.current = true;
+      trackEvent("input-discovered");
+    }
   }, [open]);
 
   function close() {
@@ -68,7 +73,9 @@ export function SecretCommand({ language }: { language: Language }) {
                 if (!ticket) throw new Error("Game entry rejected");
                 const query = new URLSearchParams({ entry: ticket });
                 if (language === "en") query.set("from", "en");
-                router.push(`/game?${query}`);
+                const destination = new URL("/game", window.location.origin);
+                destination.search = query.toString();
+                window.location.assign(destination.href);
               } catch {
                 setPending(false);
                 setInvalid(true);
@@ -102,6 +109,7 @@ export function SecretCommand({ language }: { language: Language }) {
             onChange={(event) => { setCommand(event.target.value); setInvalid(false); }}
             aria-label={language === "en" ? "Command" : "Comando"}
             aria-invalid={invalid}
+            title={invalid ? (language === "en" ? "Unable to enter. Try again." : "No se pudo entrar. Vuelve a intentarlo.") : undefined}
             autoComplete="off"
             autoCapitalize="none"
             spellCheck={false}

@@ -9,6 +9,8 @@ export const analyticsElements = [
   "navigation-top",
   "resume-download",
   "footer-wpp-production",
+  "input-discovered",
+  "game-discovered",
 ] as const;
 
 function normalizeSearch(value: string) {
@@ -46,6 +48,8 @@ export function matchingAnalyticsElements(search: string): string[] | null {
     { id: "social-linkedin", keywords: "redes social linkedin" },
     { id: "resume-download", keywords: "cv curriculum resume descargar descarga" },
     { id: "footer-wpp-production", keywords: "wpp production empresa footer pie atribucion" },
+    { id: "input-discovered", keywords: "input encontrado descubierto consola secreta easter egg discovery" },
+    { id: "game-discovered", keywords: "game juego descubierto breakout easter egg discovery" },
   ];
 
   return [...new Set(entries.filter((entry) => {
