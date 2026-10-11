@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Breakout } from "@/components/breakout";
 
 export const metadata: Metadata = {
-  title: "Game | Santiago Martínez",
+  title: "Breakout | Santiago Martínez",
   robots: { index: false, follow: false },
 };
 
