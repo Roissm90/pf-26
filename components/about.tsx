@@ -28,9 +28,11 @@ export function About({ language = "es" }: LanguageProps) {
       <div className="mx-auto mt-12 max-w-3xl border-t border-border/60 pt-8">
         <Reveal>
           <h3 className="text-lg font-medium">{t(language, "Formación y certificados")}</h3>
+        </Reveal>
           <ul className="mt-4 divide-y divide-border/60">
-            {education.map((item) => (
+            {education.map((item, index) => (
               <li key={item.analyticsId}>
+                <Reveal delay={index * 0.08}>
                 <a
                   href={item.href}
                   data-analytics={item.analyticsId}
@@ -49,10 +51,10 @@ export function About({ language = "es" }: LanguageProps) {
                   </span>
                   <ArrowUpRight aria-hidden="true" className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-accent" />
                 </a>
+                </Reveal>
               </li>
             ))}
           </ul>
-        </Reveal>
       </div>
     </section>
   );

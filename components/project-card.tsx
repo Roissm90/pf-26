@@ -8,7 +8,7 @@ export function ProjectCard({ project, language = "es" }: { project: Project } &
   const primaryUrl = project.liveUrl ?? project.repoUrl;
 
   return (
-    <article className={`group relative flex cursor-pointer flex-col gap-4 border-b p-6 transition-colors hover:border-accent focus-within:border-accent sm:flex-row sm:items-center sm:gap-6 ${project.featured ? "border-accent/30" : "border-border"}`}>
+    <article className={`group relative flex cursor-pointer flex-col gap-4 border-b pb-4 pt-0 px-0 sm:pb-8 transition-colors hover:border-accent focus-within:border-accent sm:flex-row sm:items-center sm:gap-6 ${project.featured ? "border-accent/30" : "border-border"}`}>
       <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden bg-white p-2.5 self-start">
         {project.imgUrl ? (
           <Image

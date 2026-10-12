@@ -111,7 +111,7 @@ export const projects: Project[] = [
     analyticsId: "project-endesa",
     description:
       "Creación de landings en WordPress con envíos de analíticay componentes reutilizables para campañas.",
-    stack: ["WordPress", "AEM", "PHP"],
+    stack: ["WordPress", "AEM", "PHP", "CSS"],
     liveUrl: "https://endesaluzempresas.com/",
     imgUrl: "https://portfolio-santiago-martinez-rois.wuaze.com/wp-content/uploads/2026/04/Nuevo-logo_Endesa.png",
   },
@@ -130,7 +130,7 @@ export const projects: Project[] = [
     analyticsId: "project-ayesa",
     description:
       "Desarrollo y mantenimiento de la web de Ayesa, optimizando la experiencia de usuario y el rendimiento.",
-    stack: ["WordPress", "Scss", "PHP"],
+    stack: ["WordPress", "Scss", "PHP", "GSAP"],
     liveUrl: "https://www.ayesa.com/",
     imgUrl: "https://portfolio-santiago-martinez-rois.wuaze.com/wp-content/uploads/2026/04/ayesa-1.png",
   },
@@ -139,7 +139,7 @@ export const projects: Project[] = [
     analyticsId: "project-bsh",
     description:
       "Implementación del flujo de participación y votación, con animaciones GSAP.",
-    stack: ["PHP", "JavaScript", "HTML5", "Scss", "GSAP"],
+    stack: ["PHP", "JavaScript", "Scss", "GSAP"],
     liveUrl: "https://makeitreal.schwaebisch-hall.de/",
     imgUrl: "https://portfolio-santiago-martinez-rois.wuaze.com/wp-content/uploads/2026/10/BSH.png",
     featured: true,
@@ -149,7 +149,7 @@ export const projects: Project[] = [
     analyticsId: "project-generali",
     description:
       "Desarrollo de la plataforma de gestión de clientes para Generali, mejorando la experiencia de usuario y la eficiencia del sistema.",
-    stack: ["WordPress", "PHP", "Scss"],
+    stack: ["WordPress", "PHP", "Scss", "JavaScript"],
     liveUrl: "https://www.generali.es/",
     imgUrl: "https://portfolio-santiago-martinez-rois.wuaze.com/wp-content/uploads/2026/04/generali-1.png",
   },
@@ -167,7 +167,7 @@ export const projects: Project[] = [
     analyticsId: "project-suchard",
     description:
       "Desarrollo del sitio web de la marca de chocolates Suchard, implementando un diseño atractivo en su landing page.",
-    stack: ["PHP", "JavaScript", "HTML5", "Scss", "GSAP"],
+    stack: ["PHP", "JavaScript", "Scss", "GSAP"],
     liveUrl: "https://www.suchard.es/",
     imgUrl: "https://portfolio-santiago-martinez-rois.wuaze.com/wp-content/uploads/2026/04/suchard.png",
     featured: true,
