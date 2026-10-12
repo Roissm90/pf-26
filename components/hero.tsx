@@ -14,7 +14,7 @@ export function Hero({ language = "es" }: LanguageProps) {
       id="top"
       className="relative overflow-hidden px-6 py-10 min-[767px]:py-20 min-h-svh flex flex-col justify-between"
     >
-      <div className="mx-auto max-w-3xl">
+      <div className="w-full mx-auto max-w-3xl">
         <div>
           <div className="flex items-center gap-3 font-mono text-sm font-medium text-accent"><span aria-hidden="true" className="h-2 w-2 bg-accent" /><TypewriterText text={t(language, personalInfo.role)} /><SecretCommand language={language} /></div>
         </div>

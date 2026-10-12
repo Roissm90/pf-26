@@ -103,15 +103,17 @@ export type Project = {
   imgUrl?: string;
   repoUrl?: string;
   featured?: boolean;
+  badge?: string;
 };
 
 export const projects: Project[] = [
   {
     title: "Endesa",
     analyticsId: "project-endesa",
+    badge: "Gestión de contenido",
     description:
-      "Creación de landings en WordPress con envíos de analíticay componentes reutilizables para campañas.",
-    stack: ["WordPress", "AEM", "PHP", "CSS"],
+      "Creación de landings en WordPress con envíos de analítica y componentes reutilizables para campañas.",
+    stack: ["WordPress", "AEM", "JavaScript", "PHP", "CSS"],
     liveUrl: "https://endesaluzempresas.com/",
     imgUrl: "https://portfolio-santiago-martinez-rois.wuaze.com/wp-content/uploads/2026/04/Nuevo-logo_Endesa.png",
   },
@@ -130,7 +132,7 @@ export const projects: Project[] = [
     analyticsId: "project-ayesa",
     description:
       "Desarrollo y mantenimiento de la web de Ayesa, optimizando la experiencia de usuario y el rendimiento.",
-    stack: ["WordPress", "Scss", "PHP", "GSAP"],
+    stack: ["WordPress", "JavaScript", "Scss", "PHP", "GSAP"],
     liveUrl: "https://www.ayesa.com/",
     imgUrl: "https://portfolio-santiago-martinez-rois.wuaze.com/wp-content/uploads/2026/04/ayesa-1.png",
   },
@@ -158,7 +160,7 @@ export const projects: Project[] = [
     analyticsId: "project-farmalastic",
     description:
       "Desarrollo del sitio web de la farmacia online Farmalastic, implementando un diseño responsive y optimizando la experiencia de usuario.",
-    stack: ["WordPress", "CSS", "PHP"],
+    stack: ["WordPress", "JavaScript", "CSS", "PHP"],
     liveUrl: "https://farmalastic.cinfa.com/",
     imgUrl: "https://portfolio-santiago-martinez-rois.wuaze.com/wp-content/uploads/2026/04/farmalastic.png",
   },

@@ -96,7 +96,7 @@ export function Navbar({ language = "es" }: LanguageProps) {
           {personalInfo.initials}
         </a>
 
-        <nav aria-label={t(language, "Navegación principal")} className="hidden items-center gap-5 text-sm text-muted-foreground lg:flex lg:gap-8 ml-[13.5%] mr-auto">
+        <nav aria-label={t(language, "Navegación principal")} className="hidden items-center gap-5 text-sm text-muted-foreground lg:flex lg:gap-8 ml-[8.5%] mr-auto">
           {navigationLinks.map((link) => (
             <a
               key={link.href}

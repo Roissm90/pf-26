@@ -35,6 +35,11 @@ export function ProjectCard({ project, language = "es" }: { project: Project } &
               {t(language, "Reciente")}
             </span>
           )}
+          {project.badge && (
+            <span className="border-l border-accent/40 pl-2 font-mono text-[10px] font-bold uppercase">
+              {t(language, project.badge)}
+            </span>
+          )}
         </div>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
           {t(language, project.description)}

@@ -9,7 +9,7 @@ const generationVersion = 2;
 const segmenter = new Intl.Segmenter("es", { granularity: "sentence" });
 const output = "content/translations.generated.json";
 const sources = ["content/data.ts", "app/en/page.tsx"];
-const dataFields = new Set(["role", "tagline", "bioShort", "location", "label", "category", "description", "format"]);
+const dataFields = new Set(["role", "tagline", "bioShort", "location", "label", "category", "description", "format", "badge"]);
 for (const entry of await readdir("components")) {
   if (entry.endsWith(".tsx")) sources.push(`components/${entry}`);
 }

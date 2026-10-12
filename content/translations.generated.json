@@ -1,7 +1,7 @@
 {
   "model": "Xenova/m2m100_418M",
   "generationVersion": 2,
-  "sourceHash": "7199acb5b6c817013503ff4276837a3daee61ff340370fd2d5c986b9cefb937e",
+  "sourceHash": "d8edcc572cbaa4a8fa6474c5601a76578cb2dfa673a7c1ef5ca799e035bfe132",
   "translations": {
     ". Se presentan únicamente para dar a conocer mi experiencia y mis capacidades. Los derechos sobre las marcas, los diseños, el código y los demás contenidos de estos proyectos corresponden a sus respectivos titulares. No reivindico su titularidad ni la autoría exclusiva de estos proyectos.": ". They are presented solely to showcase my experience and skills. The rights to the brands, designs, code and other content of these projects belong to their respective owners. I do not claim ownership or sole authorship of these projects.",
     "Abrir menú": "Open menu",
@@ -16,7 +16,7 @@
     "Construyo interfaces rápidas, accesibles y con atención al detalle, del diseño al deploy.": "I build fast, accessible interfaces with attention to detail, from design to deployment.",
     "Contacto": "Contact",
     "Contáctame y te respondo a la mayor brevedad posible.": "Contact me and I will answer you as soon as possible.",
-    "Creación de landings en WordPress con envíos de analíticay componentes reutilizables para campañas.": "Building WordPress landing pages with analytics event tracking and reusable campaign components.",
+    "Creación de landings en WordPress con envíos de analítica y componentes reutilizables para campañas.": "Building WordPress landing pages with analytics event tracking and reusable campaign components.",
     "Credencial": "Credential",
     "Código de": "Code of",
     "Desarrollador frontend en Madrid. React, Next.js y experiencias web rápidas y accesibles. Descubre mi experiencia y proyectos.": "Frontend developer in Madrid. React, Next.js and fast, accessible web experiences. Explore my experience and projects.",
@@ -33,6 +33,7 @@
     "Formación y certificados": "Education and Certificates",
     "Formé parte del equipo de desarrollo frontend, colaborando en proyectos para clientes de distintos sectores. Pasé de tareas guiadas a resolver de forma autónoma necesidades técnicas y de UX, aplicando buenas prácticas de rendimiento y diseño responsive en cada entrega.": "I worked as part of the frontend development team on projects for clients across different industries. I progressed from guided tasks to independently addressing technical and UX requirements, applying performance and responsive design best practices to each delivery.",
     "Frontend": "Frontend",
+    "Gestión de contenido": "Content management",
     "GitHub": "GitHub",
     "Herramientas y Calidad": "Tools and Quality",
     "Hola, soy": "Hi, I'm",
